@@ -22,15 +22,15 @@ public class SumaSalarioDao {
         }
     }
 
-    public ArrayList<Suma_Salario> requerimiento3(String sql1) throws SQLException {
+    public ArrayList<Suma_Salario> requerimiento3() throws SQLException {
         ArrayList<Suma_Salario> lista = new ArrayList<>();
-        String sql = sql1;
+        String sql = "select Ciudad_Residencia, sum(Salario) as Suma from Lider l group by Ciudad_Residencia;";
         Statement pstm = conexion.createStatement();
         ResultSet resultados = pstm.executeQuery(sql);
         while(resultados.next()){
             Suma_Salario SumaSalario = new Suma_Salario();
             SumaSalario.setCiudad(resultados.getString("Ciudad_Residencia"));
-            SumaSalario.setSumaSalario(resultados.getInt("sum(Salario)"));
+            SumaSalario.setSumaSalario(resultados.getInt("Suma"));
             lista.add(SumaSalario);
         }
         return lista;

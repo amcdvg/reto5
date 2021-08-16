@@ -157,6 +157,18 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                 
                 this.setVisible(false);
                 primera.setVisible(true);
+                try {
+                    ArrayList<Lider> resultado = controlador.consultarRequerimiento1();
+                    for (Lider lider:resultado){
+                        String Nombre = 
+                        System.out.print(lider.getNombre()+" ");
+                        System.out.print(lider.getPrimer_Apellido()+" ");
+                        System.out.print(lider.getSegundo_Apellido()+" ");
+                        System.out.println(lider.getSalario());
+                    }
+                } catch (Exception e) {
+                    System.err.println(e);
+                }
                 //JOptionPane.showMessageDialog(null,primera);
                 
            /* ArrayList<Lider> resultado = controlador.consultarRequerimiento1(Consulta);

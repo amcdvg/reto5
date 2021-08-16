@@ -21,14 +21,14 @@ public class TransformarDao {
         }
     }
 
-    public ArrayList<Transformar_Nombre> requerimiento2(String sql1) throws SQLException {
+    public ArrayList<Transformar_Nombre> requerimiento2() throws SQLException {
         ArrayList<Transformar_Nombre> lista = new ArrayList<>();
-        String sql = sql1;
+        String sql = "select LOWER(SUBSTR(Nombre,1,1)) || UPPER(SUBSTR(Nombre,2,LENGTH(Nombre))) as Transformar from Lider;";
         Statement pstm = conexion.createStatement();
         ResultSet resultados = pstm.executeQuery(sql);
         while(resultados.next()){
             Transformar_Nombre tranformar = new Transformar_Nombre();
-            tranformar.setTransformar(resultados.getString("LOWER(SUBSTR(Nombre,1,1)) || UPPER(SUBSTR(Nombre,2,LENGTH(Nombre)))"));
+            tranformar.setTransformar(resultados.getString("Transformar"));
             lista.add(tranformar);
         }
         return lista;

@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import utp.misiontic2022.c2.p47.reto4.modelo.vo.Lider;
 import utp.misiontic2022.c2.p47.reto4.util.JDBCUtilities;
-import utp.misiontic2022.c2.p47.reto4.vista.PrimeraConsulta;
 
 
 public class LiderDao {
@@ -24,10 +23,9 @@ public class LiderDao {
         }
     }
 
-    public PrimeraConsulta requerimiento1(String sql1) throws SQLException {
-        PrimeraConsulta modelo = new PrimeraConsulta();
+    public ArrayList<Lider> requerimiento1() throws SQLException {
         ArrayList<Lider> lista = new ArrayList<>();
-        String sql = sql1;
+        String sql = "select Nombre, Primer_Apellido,Segundo_Apellido, Salario from lider where Segundo_Apellido = 'Ortiz';";
         Statement pstm = conexion.createStatement();
         ResultSet resultados = pstm.executeQuery(sql);
         while(resultados.next()){
@@ -38,17 +36,6 @@ public class LiderDao {
             lider.setSalario(resultados.getFloat("Salario"));
             lista.add(lider);
         }
-        Object [][] lis= new Object[lista.size()][4];
-            for(int i = 0; i < lista.size();i++){
-                lis[i][0]=lista.get(i).getNombre();
-                lis[i][1]=lista.get(i).getPrimer_Apellido();
-                lis[i][2]=lista.get(i).getSegundo_Apellido();
-                lis[i][3]=lista.get(i).getSalario();
-            }
-            
-        modelo.Tabla1 = lis;
-        
-        
-        return modelo;
+        return lista;
     }
 }
