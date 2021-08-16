@@ -157,7 +157,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                 
                 this.setVisible(false);
                 primera.setVisible(true);
-                JOptionPane.showMessageDialog(null,primera);
+                //JOptionPane.showMessageDialog(null,primera);
                 
            /* ArrayList<Lider> resultado = controlador.consultarRequerimiento1(Consulta);
             
